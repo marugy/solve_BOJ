@@ -1,4 +1,3 @@
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -13,7 +12,7 @@ public class Main {
 	static int[][]map = null;
 	static int[][]dist = null;
 	static int[][]dir= {{1,0},{-1,0},{0,1},{0,-1}};
-	static boolean[][] visited;
+	static boolean[][] visited = null;
 	
 	static class Pos{
 		int x;
@@ -63,6 +62,7 @@ public class Main {
 	public static void main(String [] args) throws IOException{
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st = new StringTokenizer(br.readLine());
+		StringBuffer sb = new StringBuffer();
 		
 		n = Integer.parseInt(st.nextToken());
 		m = Integer.parseInt(st.nextToken());
@@ -85,9 +85,10 @@ public class Main {
 		
 		for(int i=0;i<n;i++) {
 			for(int j=0;j<m;j++) {
-				System.out.print(dist[i][j]+" ");
+				sb.append(dist[i][j]+" ");
 			}
-			System.out.println();
+			sb.append("\n");
 		}
+		System.out.println(sb.toString());
 	}
 }
