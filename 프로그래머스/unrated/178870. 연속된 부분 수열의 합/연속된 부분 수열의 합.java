@@ -2,40 +2,29 @@ import java.util.*;
 
 class Solution {
     public int[] solution(int[] sequence, int k) {
-    int []answer = {0,0};
-
+        ArrayList list = new ArrayList<>();
+        ArrayList answer = new ArrayList<>();
+        
         int start = 0;
         int end = 0;
-        int cnt = 0; //현재 담은 원소 수
-        int minCnt = Integer.MAX_VALUE;
-        int sum = 0; // 현재 담은 수열의 합
-        int minStart = 0;
-        int minEnd = 0;
-
-        while(true){
-            if(end==sequence.length && sum<k) break;
-            
+        int sum = 0;
+        
+        while(end<sequence.length){
             if(sum<k){
-                sum += sequence[end++];
-                cnt++;
-            }else if(sum>k){
+                list.add(sequence[end]);
+                sum+=sequence[end++];
+            }else if(sum>=k){
                 sum-=sequence[start++];
-                cnt--;
+                list.remove(0);
             }
-            else if(sum==k){
-                if(cnt < minCnt){
-                    minCnt = cnt;
-                    minStart = start;
-                    minEnd = end-1;
-                }
-                sum-=sequence[start++];
-                cnt--;
+            
+            if(sum==k && (list.size() < answer.size() || answer.size()==0)){
+                answer = new ArrayList<>(list);
             }
         }
+        System.out.print(answer.toString());
         
-        answer[0] = minStart;
-        answer[1] = minEnd;
-        return answer;
+        int[]tmp = new int[1];
+        return tmp;
     }
-
 }
