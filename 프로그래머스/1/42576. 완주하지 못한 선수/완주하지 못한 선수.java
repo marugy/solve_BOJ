@@ -3,6 +3,7 @@ class Solution {
     public String solution(String[] participant, String[] completion) {
         
         HashMap<String, Integer> map = new HashMap<>();
+        String answer = "";
         
         for(int i=0; i<completion.length; i++){
             if(map.containsKey(completion[i])){
@@ -20,9 +21,9 @@ class Solution {
                     map.remove(participant[i]);
                 }
             }else{
-                return participant[i];
+                answer = participant[i];
             }
         }
-        return "";
+        return answer;
     }
 }
